@@ -9,16 +9,26 @@ class Home extends React.Component {
     super(props);
     this.state = {
       items : [],
-      newItemName : ""
+      newItemName : "",
+      id: ""
     }
+  }
+
+  generateRandomId(){
+    return Math.floor(Math.random() * 1000000)
   }
 
   addItemToList(e){
     e.preventDefault();
-    const newItemList = [...this.state.items, this.state.newItemName]
+    const newItem = {
+      name : this.state.newItemName,
+      id: this.generateRandomId()
+    };
+    const newItemList = [...this.state.items, newItem]
     this.setState({
       items : newItemList,
-      newItemName : ""
+      newItemName : "",
+      id : ""
     });
     console.log(this.state.items)
   }
