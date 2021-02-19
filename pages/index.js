@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Control from '../components/control.js'
+import List from '../components/tasklist.js'
 import React from 'react'
 
 class Home extends React.Component {
@@ -42,6 +43,7 @@ class Home extends React.Component {
     return(
       <div>
         <Control itemname = {this.state.newItemName} updateinput = {this.updateControlInput.bind(this)} addtolist = {this.addItemToList.bind(this)} ></Control>
+        <List items = {this.state.items}></List>
       </div>
     );
   }
