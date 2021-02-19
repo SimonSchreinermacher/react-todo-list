@@ -1,9 +1,9 @@
-export default function Control(){
+export default function Control(props){
     return(
         <div>
-            <form>
-                <input placeholder="Task"></input>
-                <button>Add new Task</button>
+            <form onSubmit={props.addtolist}>
+                <input value = {props.itemname} onChange={props.updateinput} placeholder="Task"></input>
+                <button type="submit">Add new Task</button>
             </form>
         </div>
     );
