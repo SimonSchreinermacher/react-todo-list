@@ -11,7 +11,7 @@ export default function List(props){
         <div>
             {props.items.map(item => {
                 return(
-                    <Task key = {item.id} task={item.name}></Task>
+                    <Task key = {item.id} id = {item.id} task={item.name} deleteitem = {props.deleteitem}></Task>
                 );
             })}
         </div>

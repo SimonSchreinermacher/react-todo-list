@@ -36,14 +36,19 @@ class Home extends React.Component {
 
   updateControlInput(e){
     this.setState({newItemName : e.target.value});
-    console.log(this.state.newItemName)
+    console.log(this.state.newItemName);
+  }
+
+  deleteTask(id){
+    console.log("ID:" + id);
+    this.setState({items : this.state.items.filter(item => item.id !== id)});
   }
 
   render(){
     return(
       <div>
         <Control itemname = {this.state.newItemName} updateinput = {this.updateControlInput.bind(this)} addtolist = {this.addItemToList.bind(this)} ></Control>
-        <List items = {this.state.items}></List>
+        <List items = {this.state.items} deleteitem = {this.deleteTask.bind(this)}></List>
       </div>
     );
   }
