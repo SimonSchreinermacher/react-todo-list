@@ -11,22 +11,17 @@ export default function Task(props){
         props.deleteitem(props.id);
     }
 
-    function handleEdit(){
-        setState({edit: true, editInput: state.editInput, taskname: state.taskname});
+    function toggleEdit(){
+        setState({edit: !state.edit, editInput: "", taskname: state.taskname});
     }
 
     function confirmEdit(e){
         let newValue = state.editInput;
         setState({edit: false, editInput: "", taskname: newValue});
-        
     }
 
     function changeEditInput(e){
         setState({edit: state.edit, editInput: e.target.value, taskname: state.taskname})
-    }
-
-    function cancelEdit(e){
-        setState({edit: false, editInput: "", taskname: state.taskname})
     }
 
     let display;
@@ -35,7 +30,7 @@ export default function Task(props){
             <form onSubmit = {confirmEdit}>
                 <input value= {state.editInput} onChange={changeEditInput}></input>
                 <button type="submit">Confirm Edit</button>
-                <button onClick = {cancelEdit}>Cancel Edit</button>
+                <button onClick = {toggleEdit}>Cancel Edit</button>
             </form>
         </div>
     }
@@ -47,7 +42,7 @@ export default function Task(props){
         <div>
             {display}
             <button onClick = {handleDelete}>Task finished</button>
-            <button onClick = {handleEdit}>Edit Task</button>
+            <button onClick = {toggleEdit}>Edit Task</button>
         </div>
     );
 }
