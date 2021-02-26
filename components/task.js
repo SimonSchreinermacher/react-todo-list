@@ -25,12 +25,17 @@ export default function Task(props){
         setState({edit: state.edit, editInput: e.target.value, taskname: state.taskname})
     }
 
+    function cancelEdit(e){
+        setState({edit: false, editInput: "", taskname: state.taskname})
+    }
+
     let display;
     if(state.edit == true){
         display = <div>
             <form onSubmit = {confirmEdit}>
                 <input value= {state.editInput} onChange={changeEditInput}></input>
                 <button type="submit">Confirm Edit</button>
+                <button onClick = {cancelEdit}>Cancel Edit</button>
             </form>
         </div>
     }
